@@ -18,7 +18,7 @@ services:
       db:
         condition: service_healthy
     environment:
-      - DATABASE_URL=postgres://miniflux:secret@db/miniflux?sslmode=disable
+      - DATABASE_URL=postgres://miniflux:secret@db/miniflux2?sslmode=disable
       - RUN_MIGRATIONS=1
       - CREATE_ADMIN=1
       - ADMIN_USERNAME=admin
@@ -30,6 +30,7 @@ services:
     environment:
       - POSTGRES_USER=miniflux
       - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=miniflux2
     volumes:
       - miniflux-db:/var/lib/postgresql/data
     healthcheck:
