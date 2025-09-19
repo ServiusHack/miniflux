@@ -23,7 +23,7 @@ func (h *handler) showCreateCategoryPage(w http.ResponseWriter, r *http.Request)
 	view := view.New(h.tpl, r, sess)
 	view.Set("menu", "categories")
 	view.Set("user", user)
-	view.Set("countUnread", h.store.CountUnreadEntries(user.ID))
+	view.Set("countUnread", h.store.CountUnreadEntries(user))
 	view.Set("countErrorFeeds", h.store.CountUserFeedsWithErrors(user.ID))
 
 	html.OK(w, r, view.Render("create_category"))

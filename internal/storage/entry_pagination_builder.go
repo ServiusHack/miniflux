@@ -64,6 +64,13 @@ func (e *EntryPaginationBuilder) WithGloballyVisible() {
 	e.conditions = append(e.conditions, "not f.hide_globally")
 }
 
+// WithoutFuture adds hiding of future entries to the condition.
+func (e *EntryPaginationBuilder) WithoutFuture(hide bool) {
+	if hide {
+		e.conditions = append(e.conditions, "e.published_at <= now()")
+	}
+}
+
 // Entries returns previous and next entries.
 func (e *EntryPaginationBuilder) Entries() (*model.Entry, *model.Entry, error) {
 	tx, err := e.store.db.Begin()

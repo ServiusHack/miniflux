@@ -33,6 +33,7 @@ type SettingsForm struct {
 	DefaultHomePage        string
 	CategoriesSortingOrder string
 	MarkReadOnView         bool
+	HideFutureEntries      bool
 }
 
 // Merge updates the fields of the given user.
@@ -55,6 +56,7 @@ func (s *SettingsForm) Merge(user *model.User) *model.User {
 	user.DefaultHomePage = s.DefaultHomePage
 	user.CategoriesSortingOrder = s.CategoriesSortingOrder
 	user.MarkReadOnView = s.MarkReadOnView
+	user.HideFutureEntries = s.HideFutureEntries
 
 	if s.Password != "" {
 		user.Password = s.Password
@@ -122,5 +124,6 @@ func NewSettingsForm(r *http.Request) *SettingsForm {
 		DefaultHomePage:        r.FormValue("default_home_page"),
 		CategoriesSortingOrder: r.FormValue("categories_sorting_order"),
 		MarkReadOnView:         r.FormValue("mark_read_on_view") == "1",
+		HideFutureEntries:      r.FormValue("hide_future_entries") == "1",
 	}
 }

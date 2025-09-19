@@ -43,7 +43,7 @@ func (h *handler) updateCategory(w http.ResponseWriter, r *http.Request) {
 	view.Set("category", category)
 	view.Set("menu", "categories")
 	view.Set("user", loggedUser)
-	view.Set("countUnread", h.store.CountUnreadEntries(loggedUser.ID))
+	view.Set("countUnread", h.store.CountUnreadEntries(loggedUser))
 	view.Set("countErrorFeeds", h.store.CountUserFeedsWithErrors(loggedUser.ID))
 
 	categoryRequest := &model.CategoryRequest{

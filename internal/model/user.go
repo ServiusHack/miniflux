@@ -35,6 +35,7 @@ type User struct {
 	DefaultHomePage        string     `json:"default_home_page"`
 	CategoriesSortingOrder string     `json:"categories_sorting_order"`
 	MarkReadOnView         bool       `json:"mark_read_on_view"`
+	HideFutureEntries      bool       `json:"hide_future_entries"`
 }
 
 // UserCreationRequest represents the request to create a user.

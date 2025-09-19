@@ -41,7 +41,7 @@ func (h *handler) updateSettings(w http.ResponseWriter, r *http.Request) {
 	view.Set("timezones", timezones)
 	view.Set("menu", "settings")
 	view.Set("user", loggedUser)
-	view.Set("countUnread", h.store.CountUnreadEntries(loggedUser.ID))
+	view.Set("countUnread", h.store.CountUnreadEntries(loggedUser))
 	view.Set("countErrorFeeds", h.store.CountUserFeedsWithErrors(loggedUser.ID))
 
 	if validationErr := settingsForm.Validate(); validationErr != nil {
